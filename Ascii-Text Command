@@ -1,0 +1,46 @@
+{
+  "name": "ascii",
+  "permissions": "NONE",
+  "restriction": "1",
+  "_id": "BuaDe",
+  "actions": [
+    {
+      "info": "1",
+      "infoIndex": "1",
+      "storage": "1",
+      "varName": "text",
+      "name": "Store Command Params"
+    },
+    {
+      "condition": "0",
+      "comparison": "1",
+      "value": "1",
+      "iftrue": "3",
+      "iftrueVal": "2",
+      "iffalse": "0",
+      "iffalseVal": "",
+      "name": "Check Parameters"
+    },
+    {
+      "behavior": "0",
+      "interpretation": "0",
+      "code": "var access = require(\"request\");\nvar input = msg.content.replace(\"!ascii \", \"\");\naccess(\"https://artii.herokuapp.com/make?text=\" + tempVars(\"text\"), function(error, response, body) {\n  if (!error && response.statusCode == 200) {\n    msg.channel.send(\"\\n```\" + body + \"```\");\n  }\n  else{\n  msg.channel.send(\"Invaild Arguments of\" + \" \" + input);\n  }\n});",
+      "storage": "0",
+      "varName": "",
+      "name": "Run Script"
+    },
+    {
+      "name": "End Action Sequence"
+    },
+    {
+      "channel": "0",
+      "varName": "",
+      "message": "**Wrong Format:**\n!ascii <Text>",
+      "storage": "0",
+      "varName2": "",
+      "iffalse": "0",
+      "iffalseVal": "",
+      "name": "Send Message"
+    }
+  ]
+}
